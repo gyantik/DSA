@@ -1,6 +1,19 @@
 // LeetCode: CountGoodNumbers 
 // Date: 08-03-2026 
- 
-class Solution { 
-    // paste your solution here 
-} 
+class Solution {
+     static final long m =1000000007;
+    public int countGoodNumbers(long n) {
+        long even = findpower(5,((n+1)/2));
+        long odd =findpower(4,n/2);
+        return (int) ((even*odd)%m);
+    }
+    public long findpower(long a, long b){
+        if(b==0) return 1;
+        long half= findpower(a,b/2);
+        long result=((half*half)%m);
+        if(b%2==1){
+            result= (result*a)%m;
+        }
+        return result;
+    }
+}
